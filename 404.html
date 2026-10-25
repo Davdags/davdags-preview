@@ -6,56 +6,162 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Website preview · DavDags</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Archivo:wght@800;900&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
 <style>
-  /* One template for every preview; each niche only changes the colours and the heading font. */
-  :root { --bg: #ffffff; --ink: #14161c; --muted: #5f6472; --soft: #f4f5f8; --accent: #1f4fd8; --accent-ink: #ffffff; --head: "Inter", system-ui, sans-serif; }
-  body[data-niche="fashion"] { --accent: #111111; --soft: #f6f2ee; --head: "Playfair Display", Georgia, serif; }
+  /* One page, four designs (data-layout): shop, bold, luxury, menu. The niche sets a default colour,
+     the customer's own colour (if any) overrides --accent inline. */
+  :root {
+    --bg: #ffffff; --ink: #14161c; --muted: #5f6472; --soft: #f4f5f8; --line: #e6e8ee;
+    --accent: #1f4fd8; --accent-ink: #ffffff; --head: "Inter", system-ui, sans-serif; --radius: 18px;
+  }
+  body[data-niche="fashion"] { --accent: #111111; --soft: #f6f2ee; }
   body[data-niche="food"] { --accent: #c2410c; --soft: #fff4ec; }
-  body[data-niche="beauty"] { --accent: #7c3aed; --soft: #f5f1ff; --head: "Playfair Display", Georgia, serif; }
+  body[data-niche="beauty"] { --accent: #b0306a; --soft: #fbf0f5; }
   body[data-niche="gadgets"] { --accent: #0f766e; --soft: #eef8f7; }
   body[data-niche="construction"] { --accent: #b45309; --soft: #fbf6ee; }
   body[data-niche="services"] { --accent: #1f4fd8; --soft: #eff4ff; }
-  /* Dark look for premium and luxury brands; the customer's own colour (if any) sets --accent inline. */
-  body[data-theme="dark"] { --bg: #0d0d0f; --ink: #f5f3ee; --muted: #a9a59c; --soft: #1a1a1e; --head: "Playfair Display", Georgia, serif; }
-  body[data-theme="dark"] .card .img { background: #26262b; }
-  body[data-theme="dark"] .btn.ghost { color: var(--ink); border-color: var(--ink); }
+
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   html, body { margin: 0; }
-  body { background: var(--bg); color: var(--ink); font: 16px/1.5 "Inter", system-ui, sans-serif; }
+  body { background: var(--bg); color: var(--ink); font: 16px/1.55 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
-  .bar { position: sticky; top: 0; z-index: 10; background: #0b1220; color: #fff; font-size: 13px; text-align: center; padding: 8px 12px; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  .bar { position: sticky; top: 0; z-index: 30; background: #0b1220; color: #fff; font-size: 12.5px; text-align: center; padding: 8px 12px; }
   .bar b { color: #7cb7ff; }
-  header { display: flex; align-items: center; gap: 12px; padding: 16px 20px; max-width: 1100px; margin: 0 auto; }
-  header img { width: 48px; height: 48px; object-fit: contain; border-radius: 10px; background: var(--soft); }
-  header .name { font: 800 20px/1.1 var(--head); }
-  header .wa { margin-left: auto; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 700; padding: 11px 18px; border-radius: 999px; border: 0; }
-  .btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
-  .hero { max-width: 1100px; margin: 0 auto; padding: 8px 20px 28px; display: grid; gap: 22px; align-items: center; }
-  .hero h1 { font: 700 clamp(30px, 6vw, 52px)/1.08 var(--head); margin: 0 0 12px; }
-  .hero p { color: var(--muted); margin: 0 0 20px; font-size: 17px; }
-  .hero .pic { border-radius: 22px; overflow: hidden; background: var(--soft); aspect-ratio: 4/3; }
-  .hero .pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  @media (min-width: 820px) { .hero { grid-template-columns: 1.05fr 1fr; padding-top: 30px; } }
-  section { max-width: 1100px; margin: 0 auto; padding: 26px 20px; }
-  h2 { font: 700 28px/1.2 var(--head); margin: 0 0 16px; }
+
+  header { position: sticky; top: 33px; z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; gap: 12px; height: 64px; }
+  header .logo { width: 40px; height: 40px; object-fit: contain; border-radius: 10px; background: var(--soft); }
+  header .name { font: 800 19px/1.1 var(--head); letter-spacing: -0.01em; }
+  header nav { margin-left: auto; display: flex; gap: 22px; font-size: 14px; color: var(--muted); }
+  header nav a { text-decoration: none; }
+  header .btn { margin-left: 8px; }
+  @media (max-width: 720px) { header nav { display: none; } header .btn { margin-left: auto; } }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 700; font-size: 15px; padding: 12px 20px; border-radius: 999px; border: 2px solid var(--accent); transition: transform .15s ease, filter .15s ease; }
+  .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: currentColor; }
+  .btn.small { padding: 9px 14px; font-size: 14px; }
+
+  .eyebrow { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+
+  /* Hero (default = shop: text beside picture) */
+  .hero .wrap { display: grid; gap: 28px; align-items: center; padding-top: 28px; padding-bottom: 36px; }
+  .hero h1 { font: 800 clamp(32px, 6.2vw, 58px)/1.05 var(--head); letter-spacing: -0.025em; margin: 0 0 14px; }
+  .hero p { color: var(--muted); margin: 0 0 24px; font-size: 18px; max-width: 34em; }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hero .pic { border-radius: 26px; overflow: hidden; background: var(--soft); aspect-ratio: 4/3; }
+  .hero .pic img { width: 100%; height: 100%; object-fit: cover; }
+  @media (min-width: 860px) { .hero .wrap { grid-template-columns: 1.05fr 1fr; padding-top: 56px; padding-bottom: 64px; } }
+
+  .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .trust .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: center; padding-top: 14px; padding-bottom: 14px; font-size: 14px; color: var(--muted); }
+  .trust span::before { content: "✓"; color: var(--accent); font-weight: 800; margin-right: 8px; }
+
+  section.block { padding: 48px 0; }
+  .head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+  h2 { font: 800 clamp(26px, 4vw, 36px)/1.15 var(--head); letter-spacing: -0.02em; margin: 0; }
+  .head p { margin: 0; color: var(--muted); }
+
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  @media (min-width: 820px) { .grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
-  .card { background: var(--soft); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; }
-  .card .img { aspect-ratio: 1; background: #e9ebf0; position: relative; }
-  .card .sample { position: absolute; left: 8px; top: 8px; background: rgba(0,0,0,.6); color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 999px; }
-  .card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .card .body { padding: 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-  .card .t { font-weight: 600; }
+  @media (min-width: 860px) { .grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+  .card { background: var(--soft); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+  .card .img { aspect-ratio: 1; background: color-mix(in srgb, var(--soft) 70%, #d9dce3); position: relative; overflow: hidden; }
+  .card .img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .card:hover .img img { transform: scale(1.04); }
+  .card .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .card .t { font-weight: 600; line-height: 1.3; }
   .card .p { font-weight: 800; color: var(--accent); }
-  .card .btn { margin-top: auto; justify-content: center; padding: 9px 12px; font-size: 14px; }
-  .about { background: var(--soft); border-radius: 22px; padding: 26px; }
+  .card .btn { margin-top: auto; padding: 9px 12px; font-size: 14px; }
+  .sample { position: absolute; left: 8px; top: 8px; background: rgba(0,0,0,.6); color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 999px; }
+
+  .steps { display: grid; gap: 14px; }
+  @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { background: var(--soft); border-radius: var(--radius); padding: 22px; }
+  .step b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); margin-bottom: 12px; }
+  .step h3 { margin: 0 0 4px; font-size: 17px; }
+  .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .about { background: var(--soft); border-radius: 26px; padding: 30px; display: grid; gap: 18px; }
   .about p { color: var(--muted); margin: 0; font-size: 17px; }
-  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 30px 20px 90px; }
-  .float { position: fixed; right: 16px; bottom: 16px; z-index: 20; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+  .about .where { font-weight: 600; color: var(--ink); }
+
+  .cta-band { background: var(--accent); color: var(--accent-ink); border-radius: 26px; padding: 34px 26px; text-align: center; }
+  .cta-band h2 { color: inherit; margin-bottom: 10px; }
+  .cta-band p { margin: 0 0 20px; opacity: .9; }
+  .cta-band .btn { background: var(--accent-ink); color: var(--accent); border-color: var(--accent-ink); }
+
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 30px 20px 100px; }
+  .float { position: fixed; right: 16px; bottom: 16px; z-index: 25; box-shadow: 0 10px 28px rgba(0,0,0,.22); }
   .msg { min-height: 70vh; display: grid; place-items: center; text-align: center; padding: 30px; color: var(--muted); }
   .msg h1 { font: 800 26px/1.2 "Inter", sans-serif; color: var(--ink); }
+
+  /* ---------- BOLD: full-bleed photo hero, heavy type, loud colour ---------- */
+  body[data-layout="bold"] { --head: "Archivo", "Inter", sans-serif; --radius: 22px; }
+  body[data-layout="bold"] .hero { position: relative; color: #fff; min-height: min(86vh, 760px); display: flex; align-items: flex-end; }
+  body[data-layout="bold"] .hero .pic { position: absolute; inset: 0; border-radius: 0; aspect-ratio: auto; }
+  body[data-layout="bold"] .hero .pic::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.15) 20%, rgba(0,0,0,.78)); }
+  body[data-layout="bold"] .hero .wrap { width: 100%; grid-template-columns: 1fr; padding-bottom: 48px; }
+  body[data-layout="bold"] .hero .text { position: relative; z-index: 1; }
+  body[data-layout="bold"] .hero h1 { font-size: clamp(40px, 9vw, 92px); text-transform: uppercase; line-height: .95; letter-spacing: -0.01em; max-width: 12em; }
+  body[data-layout="bold"] .hero p { color: rgba(255,255,255,.88); }
+  body[data-layout="bold"] .hero .btn.ghost { color: #fff; }
+  body[data-layout="bold"] .eyebrow { background: var(--accent); color: var(--accent-ink); padding: 6px 12px; border-radius: 999px; letter-spacing: .08em; }
+  body[data-layout="bold"] h2 { text-transform: uppercase; }
+  body[data-layout="bold"] .card { background: var(--bg); border: 2px solid var(--ink); }
+  body[data-layout="bold"] .card .p { font-family: var(--head); font-size: 20px; }
+  body[data-layout="bold"] .trust { background: var(--ink); color: #fff; border: 0; }
+  body[data-layout="bold"] .trust span { color: #fff; }
+
+  /* ---------- LUXURY: dark, serif, gold, generous space ---------- */
+  body[data-layout="luxury"] { --bg: #0c0c0e; --ink: #f4efe6; --muted: #a8a196; --soft: #17171b; --line: #2a2a30; --accent: #c9a227; --accent-ink: #111; --head: "Playfair Display", Georgia, serif; --radius: 4px; }
+  body[data-layout="luxury"] header { background: rgba(12,12,14,.88); }
+  body[data-layout="luxury"] header .name { font-weight: 500; letter-spacing: .04em; }
+  body[data-layout="luxury"] .hero .wrap { grid-template-columns: 1fr; text-align: center; justify-items: center; padding-top: 64px; }
+  body[data-layout="luxury"] .hero h1 { font-weight: 500; font-size: clamp(36px, 7vw, 76px); letter-spacing: -0.01em; max-width: 14em; }
+  body[data-layout="luxury"] .hero h1 em { color: var(--accent); }
+  body[data-layout="luxury"] .hero p { margin-left: auto; margin-right: auto; }
+  body[data-layout="luxury"] .hero .cta { justify-content: center; }
+  body[data-layout="luxury"] .hero .pic { width: 100%; aspect-ratio: 16/8; border-radius: 4px; margin-top: 18px; }
+  body[data-layout="luxury"] .btn { border-radius: 2px; letter-spacing: .12em; text-transform: uppercase; font-size: 12.5px; padding: 14px 22px; }
+  body[data-layout="luxury"] .btn.ghost { color: var(--accent); }
+  body[data-layout="luxury"] h2 { font-weight: 500; }
+  body[data-layout="luxury"] .head { flex-direction: column; align-items: center; text-align: center; }
+  body[data-layout="luxury"] .grid { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 860px) { body[data-layout="luxury"] .grid { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+  body[data-layout="luxury"] .card { background: transparent; }
+  body[data-layout="luxury"] .card .img { aspect-ratio: 4/5; }
+  body[data-layout="luxury"] .card .body { padding: 14px 0 0; text-align: center; align-items: center; }
+  body[data-layout="luxury"] .card .t { font-family: var(--head); font-size: 18px; font-weight: 500; }
+  body[data-layout="luxury"] .card .p { font-weight: 500; letter-spacing: .06em; }
+  body[data-layout="luxury"] .card .btn { background: transparent; color: var(--accent); }
+  body[data-layout="luxury"] .trust { border-color: var(--line); }
+  body[data-layout="luxury"] .step { background: transparent; border: 1px solid var(--line); }
+  body[data-layout="luxury"] .about { background: transparent; border: 1px solid var(--line); text-align: center; }
+  body[data-layout="luxury"] .cta-band { background: transparent; border: 1px solid var(--accent); color: var(--ink); }
+  body[data-layout="luxury"] .cta-band .btn { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+  /* ---------- MENU: warm, banner hero, list rows like a menu ---------- */
+  body[data-layout="menu"] { --bg: #fffaf3; --soft: #ffffff; --line: #f0e3d2; --head: "Fraunces", Georgia, serif; }
+  body[data-layout="menu"] .hero .wrap { grid-template-columns: 1fr; padding-top: 18px; }
+  body[data-layout="menu"] .hero .pic { order: -1; aspect-ratio: 16/9; border-radius: 26px; }
+  body[data-layout="menu"] .hero .text { background: var(--soft); border-radius: 22px; padding: 22px; margin: -70px 14px 0; position: relative; box-shadow: 0 12px 30px rgba(80,40,0,.10); }
+  @media (min-width: 860px) { body[data-layout="menu"] .hero .text { margin: -120px auto 0; max-width: 720px; text-align: center; } body[data-layout="menu"] .hero .cta { justify-content: center; } body[data-layout="menu"] .hero p { margin-left: auto; margin-right: auto; } }
+  body[data-layout="menu"] .hero h1 { font-weight: 800; letter-spacing: -0.01em; }
+  body[data-layout="menu"] .grid { grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 860px) { body[data-layout="menu"] .grid { grid-template-columns: 1fr 1fr; } }
+  body[data-layout="menu"] .card { flex-direction: row; align-items: stretch; background: var(--soft); border: 1px solid var(--line); }
+  body[data-layout="menu"] .card .img { width: 118px; flex: none; aspect-ratio: auto; min-height: 118px; }
+  body[data-layout="menu"] .card .body { justify-content: center; }
+  body[data-layout="menu"] .card .t { font-family: var(--head); font-size: 17px; }
+  body[data-layout="menu"] .card .btn { align-self: flex-start; margin-top: 4px; }
+  body[data-layout="menu"] .step, body[data-layout="menu"] .about { background: var(--soft); border: 1px solid var(--line); }
+
+  /* Dark look requested on a non-luxury design */
+  body[data-theme="dark"]:not([data-layout="luxury"]) { --bg: #0d0d0f; --ink: #f5f3ee; --muted: #a9a59c; --soft: #1a1a1e; --line: #2a2a30; }
 </style>
 </head>
 <body>
@@ -64,13 +170,24 @@
 // Previews live at preview.davdags.com/<slug>. GitHub Pages serves this same file for every path (404.html).
 const API = "https://soxevflmqepqbritrpnl.supabase.co/functions/v1/whatsapp/preview-data?slug=";
 const OWNER_WA = "447446960862"; // the DavDags WhatsApp number, for "make it live"
+const LAYOUTS = ["shop", "bold", "luxury", "menu"];
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const waIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.7-2.8-1.1-4.6-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>`;
 
+// Older previews have no layout: pick one from what we know.
+function pickLayout(d) {
+  if (LAYOUTS.includes(d.layout)) return d.layout;
+  if (d.theme === "dark") return "luxury";
+  if (d.niche === "food") return "menu";
+  if (d.niche === "services") return "bold";
+  return "shop";
+}
+
 async function main() {
-  const slug = location.pathname.replace(/^\/+|\/+$/g, "").split("/").pop() || new URLSearchParams(location.search).get("s") || "";
+  const params = new URLSearchParams(location.search);
+  const slug = location.pathname.replace(/^\/+|\/+$/g, "").split("/").pop() || params.get("s") || "";
   // Demo previews for ads (?demo=mama-chis-kitchen) are static files in this repo, not customer data.
-  const demo = (new URLSearchParams(location.search).get("demo") || "").replace(/[^a-z0-9-]/g, "");
+  const demo = (params.get("demo") || "").replace(/[^a-z0-9-]/g, "");
   const root = document.getElementById("root");
   if (!slug && !demo) { root.innerHTML = `<div class="msg"><div><h1>DavDags website previews</h1><p>Ask us on WhatsApp for your free preview.</p></div></div>`; return; }
   let d;
@@ -87,7 +204,9 @@ async function main() {
       <p><a class="btn" href="https://wa.me/${OWNER_WA}">${waIcon} Message DavDags</a></p></div></div>`;
     return;
   }
+  const layout = LAYOUTS.includes(params.get("layout")) ? params.get("layout") : pickLayout(d); // ?layout= is for comparing designs
   document.body.dataset.niche = d.niche || "other";
+  document.body.dataset.layout = layout;
   if (d.theme === "dark") document.body.dataset.theme = "dark";
   if (/^#[0-9a-f]{6}$/i.test(d.accent || "")) {
     // Light accents (gold, yellow) need dark button text to stay readable.
@@ -96,35 +215,67 @@ async function main() {
     document.body.style.setProperty("--accent-ink", 0.299 * r + 0.587 * g + 0.114 * b > 150 ? "#111111" : "#ffffff");
   }
   document.title = `${d.business_name} · preview`;
+
+  const name = d.business_name;
   const wa = (text) => `https://wa.me/${esc(d.whatsapp)}?text=${encodeURIComponent(text)}`;
   const products = (d.products || []).filter((p) => p.name);
   const heroImg = d.hero || products.find((p) => p.image)?.image || "";
+  const food = d.niche === "food";
+  const word = food ? "menu" : "products";
+  const tagline = esc(d.tagline || name);
+  // Luxury headings put the last two words in italic gold.
+  const h1 = layout === "luxury" ? tagline.replace(/(\S+\s+\S+)$/, "<em>$1</em>") : tagline;
+
   root.innerHTML = `
     <div class="bar">Preview by <b>DavDags</b> · this website isn't live yet ·
-      <a href="https://wa.me/${OWNER_WA}?text=${encodeURIComponent(`Hi DavDags, I've seen my preview (${d.business_name}). I want to make it live.`)}"><b>Make it live →</b></a></div>
-    <header>
-      ${d.logo ? `<img src="${esc(d.logo)}" alt="">` : ""}
-      <div class="name">${esc(d.business_name)}</div>
-      <a class="btn wa" href="${wa(`Hi ${d.business_name}, I saw your website.`)}">${waIcon}<span>Chat</span></a>
-    </header>
-    <div class="hero">
-      <div>
-        <h1>${esc(d.tagline || d.business_name)}</h1>
-        <p>${esc(d.location ? `${d.location} · ` : "")}Browse our products and order straight on WhatsApp.</p>
-        <a class="btn" href="#shop">Shop now</a>
-      </div>
-      ${heroImg ? `<div class="pic"><img src="${esc(heroImg)}" alt=""></div>` : ""}
-    </div>
-    ${products.length ? `<section id="shop"><h2>Our products</h2><div class="grid">
+      <a href="https://wa.me/${OWNER_WA}?text=${encodeURIComponent(`Hi DavDags, I've seen my preview (${name}). I want to make it live.`)}"><b>Make it live →</b></a></div>
+    <header><div class="wrap">
+      ${d.logo ? `<img class="logo" src="${esc(d.logo)}" alt="">` : ""}
+      <div class="name">${esc(name)}</div>
+      <nav><a href="#shop">${food ? "Menu" : "Products"}</a><a href="#how">How to order</a><a href="#about">About</a></nav>
+      <a class="btn small" href="${wa(`Hi ${name}, I saw your website.`)}">${waIcon}<span>Chat</span></a>
+    </div></header>
+    <section class="hero">
+      <div class="wrap"><div class="text">
+        <span class="eyebrow">${esc(d.location || (food ? "Fresh daily" : "Order on WhatsApp"))}</span>
+        <h1>${h1}</h1>
+        <p>${food ? "See the menu, pick what you like and order straight on WhatsApp." : "Browse our products and order straight on WhatsApp. Fast replies, easy payment."}</p>
+        <div class="cta">
+          <a class="btn" href="${wa(`Hi ${name}, I'd like to order.`)}">${waIcon} Order on WhatsApp</a>
+          <a class="btn ghost" href="#shop">See ${word}</a>
+        </div>
+      </div>${heroImg ? `<div class="pic"><img src="${esc(heroImg)}" alt=""></div>` : ""}</div>
+    </section>
+    <div class="trust"><div class="wrap">
+      <span>Order on WhatsApp</span><span>${food ? "Cooked fresh" : "Real photos, real prices"}</span><span>${d.location ? `Based in ${esc(d.location)}` : "Fast delivery"}</span>
+    </div></div>
+    ${products.length ? `<section class="block" id="shop"><div class="wrap">
+      <div class="head"><h2>${food ? "Our menu" : "Our products"}</h2><p>Tap any item to order on WhatsApp.</p></div>
+      <div class="grid">
       ${products.map((p) => `<div class="card">
         <div class="img">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">` : ""}${p.sample ? `<span class="sample">Sample photo</span>` : ""}</div>
         <div class="body"><div class="t">${esc(p.name)}</div>${p.price ? `<div class="p">${esc(p.price)}</div>` : ""}
-          <a class="btn" href="${wa(`Hi ${d.business_name}, I'd like to order: ${p.name}${p.price ? ` (${p.price})` : ""}`)}">${waIcon} Order</a></div>
+          <a class="btn" href="${wa(`Hi ${name}, I'd like to order: ${p.name}${p.price ? ` (${p.price})` : ""}`)}">${waIcon} Order</a></div>
       </div>`).join("")}
+      </div>
     </div></section>` : ""}
-    ${d.about ? `<section><div class="about"><h2>About us</h2><p>${esc(d.about)}</p></div></section>` : ""}
-    <footer>© ${new Date().getFullYear()} ${esc(d.business_name)} · Website by DavDags</footer>
-    <a class="btn float" href="${wa(`Hi ${d.business_name}, I'd like to order.`)}">${waIcon} Order on WhatsApp</a>`;
+    <section class="block" id="how"><div class="wrap">
+      <div class="head"><h2>How to order</h2></div>
+      <div class="steps">
+        <div class="step"><b>1</b><h3>Pick what you like</h3><p>Browse the ${word} and choose your items.</p></div>
+        <div class="step"><b>2</b><h3>Tap Order on WhatsApp</h3><p>Your order opens in a WhatsApp chat with us.</p></div>
+        <div class="step"><b>3</b><h3>We confirm and deliver</h3><p>We reply with the total and delivery details.</p></div>
+      </div>
+    </div></section>
+    ${d.about ? `<section class="block" id="about"><div class="wrap"><div class="about">
+      <h2>About us</h2><p>${esc(d.about)}</p>${d.location ? `<p class="where">📍 ${esc(d.location)}</p>` : ""}
+    </div></div></section>` : ""}
+    <section class="block"><div class="wrap"><div class="cta-band">
+      <h2>Ready to order?</h2><p>Message ${esc(name)} on WhatsApp. We reply fast.</p>
+      <a class="btn" href="${wa(`Hi ${name}, I'd like to order.`)}">${waIcon} Chat on WhatsApp</a>
+    </div></div></section>
+    <footer>© ${new Date().getFullYear()} ${esc(name)} · Website by DavDags</footer>
+    <a class="btn float" href="${wa(`Hi ${name}, I'd like to order.`)}">${waIcon} Order on WhatsApp</a>`;
 }
 main();
 </script>
