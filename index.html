@@ -77,7 +77,7 @@
   .card .p { font-weight: 800; color: var(--accent); }
   .card .btn { margin-top: auto; padding: 9px 12px; font-size: 14px; }
   /* No photo for this product: a short tile with its first letter instead of an empty box. */
-  .card .img.ph { aspect-ratio: 5/2; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--soft)); }
+  body[data-layout] .card .img.ph { aspect-ratio: 5/2; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--soft)); }
   .card .img.ph span { font: 700 40px/1 var(--head); color: var(--accent); }
   body[data-layout="menu"] .card .img.ph { aspect-ratio: auto; }
   .sample { position: absolute; left: 8px; top: 8px; background: rgba(0,0,0,.6); color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 999px; }
@@ -251,7 +251,7 @@ async function main() {
       </div>${heroImg ? `<div class="pic"><img src="${esc(heroImg)}" alt=""></div>` : ""}</div>
     </section>
     <div class="trust"><div class="wrap">
-      <span>Order on WhatsApp</span><span>${food ? "Cooked fresh" : "Real photos, real prices"}</span><span>${d.location ? `Based in ${esc(d.location)}` : "Fast delivery"}</span>
+      <span>Order on WhatsApp</span><span>${food ? "Cooked fresh" : "Fast replies"}</span><span>${d.location ? `Based in ${esc(d.location)}` : "Fast delivery"}</span>
     </div></div>
     ${products.length ? `<section class="block" id="shop"><div class="wrap">
       <div class="head"><h2>${food ? "Our menu" : "Our products"}</h2><p>Tap any item to order on WhatsApp.</p></div>
