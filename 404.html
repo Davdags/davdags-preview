@@ -16,6 +16,10 @@
   body[data-niche="gadgets"] { --accent: #0f766e; --soft: #eef8f7; }
   body[data-niche="construction"] { --accent: #b45309; --soft: #fbf6ee; }
   body[data-niche="services"] { --accent: #1f4fd8; --soft: #eff4ff; }
+  /* Dark look for premium and luxury brands; the customer's own colour (if any) sets --accent inline. */
+  body[data-theme="dark"] { --bg: #0d0d0f; --ink: #f5f3ee; --muted: #a9a59c; --soft: #1a1a1e; --head: "Playfair Display", Georgia, serif; }
+  body[data-theme="dark"] .card .img { background: #26262b; }
+  body[data-theme="dark"] .btn.ghost { color: var(--ink); border-color: var(--ink); }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body { background: var(--bg); color: var(--ink); font: 16px/1.5 "Inter", system-ui, sans-serif; }
@@ -81,6 +85,13 @@ async function main() {
     return;
   }
   document.body.dataset.niche = d.niche || "other";
+  if (d.theme === "dark") document.body.dataset.theme = "dark";
+  if (/^#[0-9a-f]{6}$/i.test(d.accent || "")) {
+    // Light accents (gold, yellow) need dark button text to stay readable.
+    const [r, g, b] = [1, 3, 5].map((i) => parseInt(d.accent.slice(i, i + 2), 16));
+    document.body.style.setProperty("--accent", d.accent);
+    document.body.style.setProperty("--accent-ink", 0.299 * r + 0.587 * g + 0.114 * b > 150 ? "#111111" : "#ffffff");
+  }
   document.title = `${d.business_name} · preview`;
   const wa = (text) => `https://wa.me/${esc(d.whatsapp)}?text=${encodeURIComponent(text)}`;
   const products = (d.products || []).filter((p) => p.name);
