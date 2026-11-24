@@ -160,6 +160,58 @@
   body[data-layout="menu"] .card { flex-direction: row; align-items: stretch; background: var(--soft); border: 1px solid var(--line); }
   body[data-layout="menu"] .card .img { width: 118px; flex: none; aspect-ratio: auto; min-height: 118px; }
   body[data-layout="menu"] .card .body { justify-content: center; }
+
+  /* ---------- PHONES (owner, 24 Nov: most customers open previews on a phone) ---------- */
+  @media (max-width: 719px) {
+    .wrap { padding: 0 16px; }
+    .bar { position: static; font-size: 12px; padding: 7px 10px; }
+    header { top: 0; }
+    header .wrap { height: 56px; }
+    header .name { font-size: 17px; }
+    .hero .wrap { gap: 18px; padding-top: 16px; padding-bottom: 26px; }
+    .hero .pic { order: -1; aspect-ratio: 5/4; border-radius: 20px; }
+    .hero h1 { font-size: 33px; margin-bottom: 10px; }
+    .hero p { font-size: 16px; margin-bottom: 18px; }
+    .hero .cta { flex-wrap: nowrap; gap: 8px; }
+    .hero .cta .btn { flex: 1 1 auto; padding: 13px 12px; font-size: 14.5px; white-space: nowrap; }
+    .hero .cta .btn.ghost { flex: 0 0 auto; padding: 13px 16px; }
+    .trust .wrap { gap: 6px 16px; font-size: 13px; padding: 10px 16px; }
+    section.block { padding: 30px 0; }
+    .head { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 16px; }
+    .head p { font-size: 14px; }
+    h2 { font-size: 25px; }
+    .grid { gap: 10px; }
+    .card .body { padding: 10px 11px 12px; gap: 4px; }
+    .card .t { font-size: 14.5px; }
+    .card .btn { padding: 9px 10px; font-size: 13.5px; }
+    .steps { gap: 10px; }
+    .step { display: grid; grid-template-columns: 34px 1fr; column-gap: 12px; align-items: center; padding: 14px 16px; }
+    .step b { margin: 0; grid-row: span 2; }
+    .step h3 { font-size: 16px; margin: 0; }
+    .step p { grid-column: 2; font-size: 14px; }
+    .about { padding: 22px 18px; border-radius: 20px; gap: 12px; }
+    .about p { font-size: 16px; }
+    .cta-band { padding: 26px 18px; border-radius: 20px; }
+    footer { padding: 22px 16px 96px; }
+    .float { left: 16px; right: 16px; bottom: calc(12px + env(safe-area-inset-bottom)); padding: 14px; font-size: 15.5px; transition: transform .25s ease, opacity .25s ease; }
+    .float.away { transform: translateY(150%); opacity: 0; pointer-events: none; }
+    body[data-layout="luxury"] .hero .wrap { padding-top: 16px; }
+    body[data-layout="luxury"] .hero .pic { margin-top: 0; aspect-ratio: 5/4; }
+    body[data-layout="luxury"] .btn { letter-spacing: .06em; }
+    body[data-layout="luxury"] .hero .cta .btn { padding: 13px 12px; font-size: 12px; }
+    body[data-layout="luxury"] .step { text-align: left; }
+    body[data-layout="bold"] .hero { min-height: min(78vh, 640px); }
+    body[data-layout="bold"] .hero .wrap { padding-bottom: 28px; }
+    body[data-layout="menu"] .hero .text { margin: -56px 8px 0; padding: 18px; }
+    body[data-layout="menu"] .hero .cta .btn { padding: 12px 10px; font-size: 14px; }
+    body[data-layout="menu"] .hero .cta .btn.ghost { padding: 12px 14px; }
+    body[data-layout="menu"] .card .img { width: 104px; min-height: 104px; }
+  }
+  @media (max-width: 380px) {
+    .hero .cta .btn, body[data-layout] .hero .cta .btn { font-size: 13px; padding: 12px 9px; gap: 6px; }
+    .hero .cta .btn.ghost, body[data-layout] .hero .cta .btn.ghost { padding: 12px 11px; }
+    body[data-layout="luxury"] .hero .cta .btn { font-size: 11px; letter-spacing: .04em; padding: 12px 8px; }
+  }
   body[data-layout="menu"] .card .t { font-family: var(--head); font-size: 17px; }
   body[data-layout="menu"] .card .btn { align-self: flex-start; margin-top: 4px; }
   body[data-layout="menu"] .step, body[data-layout="menu"] .about { background: var(--soft); border: 1px solid var(--line); }
@@ -283,6 +335,17 @@ async function main() {
     </div></div></section>
     <footer>© ${new Date().getFullYear()} ${esc(name)} · Website by DavDags</footer>
     <a class="btn float" href="${wa(`Hi ${name}, I'd like to order.`)}">${waIcon} Order on WhatsApp</a>`;
+
+  // The floating button steps aside while the hero buttons or the closing block are on screen (phones only, via CSS).
+  const float = root.querySelector(".float");
+  if (float && "IntersectionObserver" in window) {
+    const onScreen = new Set();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target));
+      float.classList.toggle("away", onScreen.size > 0);
+    });
+    [root.querySelector(".hero .cta"), root.querySelector(".cta-band")].forEach((el) => el && io.observe(el));
+  }
 }
 main();
 </script>
