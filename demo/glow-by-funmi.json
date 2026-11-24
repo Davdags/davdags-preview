@@ -1,0 +1,35 @@
+{
+  "business_name": "Glow by Funmi",
+  "niche": "beauty",
+  "layout": "shop",
+  "tagline": "Hair, makeup and nails that make you glow",
+  "about": "Glow by Funmi is a beauty studio in Ikeja, Lagos for braids, bridal and party makeup, nails and lashes. Book your slot on WhatsApp, come in, relax, and leave looking your best. Home service is available for brides.",
+  "location": "Ikeja GRA, Lagos",
+  "logo": "",
+  "hero": "/demo/glow-by-funmi/hero.jpg",
+  "theme": "light",
+  "accent": "#b0306a",
+  "products": [
+    {
+      "name": "Knotless braids (mid-back)",
+      "price": "₦35,000",
+      "image": "/demo/glow-by-funmi/p1.jpg"
+    },
+    {
+      "name": "Bridal makeup",
+      "price": "₦80,000",
+      "image": "/demo/glow-by-funmi/p2.jpg"
+    },
+    {
+      "name": "Gel nails with art",
+      "price": "₦12,000",
+      "image": "/demo/glow-by-funmi/p3.jpg"
+    },
+    {
+      "name": "Lash extensions",
+      "price": "₦18,000",
+      "image": "/demo/glow-by-funmi/p4.jpg"
+    }
+  ],
+  "whatsapp": "447446960862"
+}

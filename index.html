@@ -231,8 +231,10 @@ async function main() {
   const h1 = layout === "luxury" ? tagline.replace(/(\S+\s+\S+)$/, "<em>$1</em>") : tagline;
 
   root.innerHTML = `
-    <div class="bar">Preview by <b>DavDags</b> · this website isn't live yet ·
-      <a href="https://wa.me/${OWNER_WA}?text=${encodeURIComponent(`Hi DavDags, I've seen my preview (${name}). I want to make it live.`)}"><b>Make it live →</b></a></div>
+    ${demo ? `<div class="bar">Sample website by <b>DavDags</b> ·
+      <a href="${params.get("from") === "bf" ? "https://start.davdags.com/bf" : `https://wa.me/${OWNER_WA}?text=${encodeURIComponent(`Hi DavDags, I saw the ${name} sample. I want a website like this.`)}`}"><b>Get one like this →</b></a></div>`
+    : `<div class="bar">Preview by <b>DavDags</b> · this website isn't live yet ·
+      <a href="https://wa.me/${OWNER_WA}?text=${encodeURIComponent(`Hi DavDags, I've seen my preview (${name}). I want to make it live.`)}"><b>Make it live →</b></a></div>`}
     <header><div class="wrap">
       ${d.logo ? `<img class="logo" src="${esc(d.logo)}" alt="">` : ""}
       <div class="name">${esc(name)}</div>

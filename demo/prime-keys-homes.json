@@ -1,0 +1,30 @@
+{
+  "business_name": "Prime Keys Homes",
+  "niche": "services",
+  "layout": "bold",
+  "tagline": "Find your next home in Lekki and Ajah",
+  "about": "Prime Keys Homes helps families and businesses rent, buy and sell property in Lekki, Ajah and Ibeju-Lekki. Every listing is inspected, every title is checked, and our agents take you on viewings any day of the week.",
+  "location": "Lekki Phase 1, Lagos",
+  "logo": "",
+  "hero": "/demo/prime-keys-homes/hero.jpg",
+  "theme": "light",
+  "accent": "#1f4fd8",
+  "products": [
+    {
+      "name": "3-bedroom apartment, Lekki (per year)",
+      "price": "₦6,500,000",
+      "image": "/demo/prime-keys-homes/p1.jpg"
+    },
+    {
+      "name": "4-bedroom semi-detached duplex, Ajah",
+      "price": "₦120,000,000",
+      "image": "/demo/prime-keys-homes/p2.jpg"
+    },
+    {
+      "name": "600 sqm plot, Ibeju-Lekki",
+      "price": "₦18,000,000",
+      "image": "/demo/prime-keys-homes/p3.jpg"
+    }
+  ],
+  "whatsapp": "447446960862"
+}

@@ -1,0 +1,35 @@
+{
+  "business_name": "Scent by Tolu",
+  "niche": "beauty",
+  "layout": "luxury",
+  "tagline": "Luxury scents that last all day",
+  "about": "Scent by Tolu brings long-lasting luxury perfumes and oils to Abuja. Every bottle is 100% original, and we help you pick a scent that suits you. Order on WhatsApp for same-day delivery in Abuja and 2 days anywhere in Nigeria.",
+  "location": "Wuse 2, Abuja",
+  "logo": "",
+  "hero": "/demo/scent-by-tolu/hero.jpg",
+  "theme": "dark",
+  "accent": "#c9a227",
+  "products": [
+    {
+      "name": "Oud Royale, 100ml",
+      "price": "₦45,000",
+      "image": "/demo/scent-by-tolu/p1.jpg"
+    },
+    {
+      "name": "Rose Noir, 50ml",
+      "price": "₦28,000",
+      "image": "/demo/scent-by-tolu/p2.jpg"
+    },
+    {
+      "name": "Amber Musk oil, 12ml",
+      "price": "₦9,500",
+      "image": "/demo/scent-by-tolu/p3.jpg"
+    },
+    {
+      "name": "Gift box set",
+      "price": "₦60,000",
+      "image": "/demo/scent-by-tolu/p4.jpg"
+    }
+  ],
+  "whatsapp": "447446960862"
+}

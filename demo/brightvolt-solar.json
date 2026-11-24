@@ -1,0 +1,35 @@
+{
+  "business_name": "BrightVolt Solar",
+  "niche": "construction",
+  "layout": "shop",
+  "tagline": "Steady power for your home and business",
+  "about": "BrightVolt Solar installs inverters, lithium batteries and solar panels in Port Harcourt and across Rivers State. Our engineers survey your home or shop, recommend the right size and install it neatly in one day, with a warranty and after-sales support.",
+  "location": "Port Harcourt, Rivers",
+  "logo": "",
+  "hero": "/demo/brightvolt-solar/hero.jpg",
+  "theme": "light",
+  "accent": "#0f7b3f",
+  "products": [
+    {
+      "name": "5kVA inverter + lithium battery (installed)",
+      "price": "₦1,850,000",
+      "image": "/demo/brightvolt-solar/p1.jpg"
+    },
+    {
+      "name": "4 × 550W solar panels",
+      "price": "₦720,000",
+      "image": "/demo/brightvolt-solar/p2.jpg"
+    },
+    {
+      "name": "5kWh lithium battery",
+      "price": "₦1,200,000",
+      "image": "/demo/brightvolt-solar/p3.jpg"
+    },
+    {
+      "name": "Service and maintenance visit",
+      "price": "From ₦35,000",
+      "image": "/demo/brightvolt-solar/p4.jpg"
+    }
+  ],
+  "whatsapp": "447446960862"
+}

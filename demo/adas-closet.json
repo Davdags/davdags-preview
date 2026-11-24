@@ -1,0 +1,35 @@
+{
+  "business_name": "Ada's Closet",
+  "niche": "fashion",
+  "layout": "shop",
+  "tagline": "Ankara and adire styles that turn heads",
+  "about": "Ada's Closet makes ready-to-wear Ankara and adire pieces in Lekki, Lagos. Every outfit is cut and finished by our tailors, and we deliver across Nigeria in 2 to 4 days. Pick a style, send your size on WhatsApp and we'll confirm it fast.",
+  "location": "Lekki, Lagos",
+  "logo": "",
+  "hero": "/demo/adas-closet/hero.jpg",
+  "theme": "light",
+  "accent": "#111111",
+  "products": [
+    {
+      "name": "Ankara wrap dress",
+      "price": "₦28,000",
+      "image": "/demo/adas-closet/p1.jpg"
+    },
+    {
+      "name": "Adire two-piece set",
+      "price": "₦35,000",
+      "image": "/demo/adas-closet/p2.jpg"
+    },
+    {
+      "name": "Leather tote bag",
+      "price": "₦22,000",
+      "image": "/demo/adas-closet/p3.jpg"
+    },
+    {
+      "name": "Beaded block heels",
+      "price": "₦18,500",
+      "image": "/demo/adas-closet/p4.jpg"
+    }
+  ],
+  "whatsapp": "447446960862"
+}
